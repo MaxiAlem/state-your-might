@@ -8,7 +8,7 @@ const Botones = () => {
   //  const [focus,setFocus]= useState(0)
     const [msg,setmsg] =useState('')
     const [hit,setHit] = useState(false)
-    const {toastie,setToastie,focus,setFocus} = useContext(ToastieContext)  
+    const {setToastie,focus,setFocus} = useContext(ToastieContext)  
     let time = 0
 const hitBtn =()=>{
 
