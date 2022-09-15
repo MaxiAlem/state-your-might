@@ -1,38 +1,38 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+@import url(//db.onlinewebfonts.com/c/d091f3206c618342e183bce6e68aaa37?family=Mortal+Kombat+1);
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body{
+  font-family:'Mortal Kombat 1', Courier, monospace;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.kombatient{
+  height: 70vh;
+}
+.kombatient-container{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
 }
 
-.App-link {
-  color: #61dafb;
+.App{
+  background-color: rgb(37, 39, 46);
 }
+.focus-level{
+  font-size: xx-large;
+  color: rgb(250, 220, 52);
+}
+.fillerBar{
+    width: 100%;
+    background-color: yellow;
+    border-radius: 'inherit';
+    text-align: 'right';
+  
+}
+.containerBar{
+  
+    width : 20vh;
+    height : 80%;
+    border: 2vh;
+    border-style: solid;
+    border-color: white;
+    
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
