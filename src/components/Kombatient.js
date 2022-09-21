@@ -10,7 +10,7 @@ const  animSet = require.context('../img',true)
   
 const Kombatient = () => {
   
-  const {toastie,focus} = useContext(ToastieContext) 
+  const {toastie} = useContext(ToastieContext) 
   const [index,setIndex] = useState(0);
   const [endloop,setEndloop] = useState(false)
 
