@@ -1,21 +1,22 @@
-import React from 'react'
 
-const FocusBar = (props) => {
-    const {completed} = props;
+import React,{ useContext }  from 'react'
+import { ToastieContext } from './TestGame'
+
+const FocusBar = () => {
+  const {focus} = useContext(ToastieContext) 
    
     const dinamicWidth = {//inline para el dinamismo
-        height: `${completed}%`,
+        height: `${focus}%`,
       }
-      const labelStyles = {
-        padding: 5,
-        color: 'white',
-        fontWeight: 'bold'
-      }
+    const focusBar ={
+      top: '79%'
+    }
   return (
     <div className='containerBar' >
       <div style={dinamicWidth} className='fillerBar'  >
-        <span style={labelStyles}>{`${completed}%`}</span>
+        
       </div>
+      <div   className='focusBar'style={focusBar}></div>
     </div>
   )
 }

@@ -10,9 +10,10 @@ const Botones = () => {
     const [hit,setHit] = useState(false)
     const {setToastie,focus,setFocus} = useContext(ToastieContext)  
     let time = 0
+    const focusBar = 79 //focus to reach
 const hitBtn =()=>{
 
-    if(focus >79) {setmsg('Toasty!');setToastie(true)}
+    if(focus >focusBar) {setmsg('Toasty!');setToastie(true)}
     else setmsg('dont make me laugh');
     setHit(true);
     
@@ -22,7 +23,7 @@ const focusBtn = ()=>{//posibl upgrade al puntaje
   setFocus(focus +10)
   
 }
-if(!hit){time = 600
+if(!hit){time = 600 //una vez pulsado hit, se detiene el contador
   }else {time = null
   }
 useInterval(() => {
@@ -37,15 +38,15 @@ useInterval(() => {
 
 
   return (
-    
-      <div>
-              <button
-              onClick={()=>focusBtn()}>FOCUS</button>
-              <button
-              onClick={()=>hitBtn()}>SLAM Dat Bitch</button>
-              <p className='focus-level'>focus : {focus}</p>
-
-              <p className='focus-level'>... {msg}</p>
+      <div className='bottom'>
+        <div className='btnContainer'>
+          <button
+            onClick={()=>focusBtn()}>FOCUS</button>
+          <button
+            onClick={()=>hitBtn()}>SLAM Dat Bitch</button>
+            
+      </div>
+        <p className='focus-level'>... {msg}</p>
           </div>
 
     

@@ -1,19 +1,20 @@
 
-@import url(//db.onlinewebfonts.com/c/d091f3206c618342e183bce6e68aaa37?family=Mortal+Kombat+1);
-
+/* @import url(//db.onlinewebfonts.com/c/d091f3206c618342e183bce6e68aaa37?family=Mortal+Kombat+1); */
 body{
-  font-family:'Mortal Kombat 1', Courier, monospace;
+  background-color: rgb(41, 42, 97);
+}
+.App{
+  
 }
 .kombatient{
-  height: 70vh;
+  height: 60vh;
+  max-width:80vw ;
 }
 .kombatient-container{
+ margin-top: 5vh;
+ margin-left: 3vw;
   display: flex;
   flex-direction: row;
-}
-
-.App{
-  background-color: rgb(37, 39, 46);
 }
 .focus-level{
   font-size: xx-large;
@@ -21,18 +22,47 @@ body{
 }
 .fillerBar{
     width: 100%;
+    max-height: 100%;
     background-color: yellow;
     border-radius: 'inherit';
     text-align: 'right';
-  
+
+}
+.focusBar{
+  position: absolute  ;
+  border: 1vw;
+  border-style: solid;
+  border-color: red;
+  width: 13vw;
 }
 .containerBar{
   
-    width : 20vh;
+    width : 15vw;
     height : 80%;
-    border: 2vh;
+    border: 1.5vw;
     border-style: solid;
     border-color: white;
-    
-
+    position: relative;
+}
+.bottom{
+  display: flex;
+  flex-direction: column;
+   margin-bottom: 0%;
+}
+.buttonContainer{
+  display: flex;
+  flex-direction: row;
+ 
+}
+button{
+  float: left;
+  width: 20vw;
+  height: 20vw;
+  color: white;
+  font-size: 3vh;
+  background-color: red;
+  border : none;
+  border-radius: 10%;
+  margin-left: 5vw
+  ;
 }

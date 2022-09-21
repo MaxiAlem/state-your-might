@@ -54,7 +54,7 @@ const Kombatient = () => {
             <>    
             <div className='kombatient-container'>
               <div>
-                <FocusBar  completed={focus} />
+                <FocusBar />
               </div>
               <div>
                 <img className='kombatient' alt='fighter focusing to hit' src={animSet(animChar(index))}/>
