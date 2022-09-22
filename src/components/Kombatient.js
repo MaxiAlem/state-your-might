@@ -10,43 +10,48 @@ const  animSet = require.context('../img',true)
   
 const Kombatient = () => {
   
-  const {toastie} = useContext(ToastieContext) 
-  const [index,setIndex] = useState(0);
+  const {toastie,hit,index,setIndex} = useContext(ToastieContext) 
+  
   const [endloop,setEndloop] = useState(false)
 
-  useInterval(() => {//se puede usar setInterval pwro se buguea
-  if(!toastie){
+  const loop =()=>{
       if(!endloop){
-    if (index === 0 ){
-      setIndex(1)
-    }else if(index === 1){
-      setIndex(2)
-    }else {
-      setEndloop(true)
-    }}else{
-      if (index === 2 ){
-        setIndex(1)
-      }else if(index === 1){
-        setIndex(0)
-      }else {
-        setEndloop(false)
-      };
-    };
-    }else{ //cumpliendo toastie(superar el desafio)
-      if(index === 0 ||index === 1|| index === 2){
-        setIndex(3)
-      }else if (index === 3){
-        setIndex(4)
-      }else if ( index === 4){
-        setIndex(5)
-      }else if (index === 5){
-        setIndex(6)
-      }else  {//( index === 6){
-        setIndex(7)
-      }
-    }  
+              if (index === 0 ){
+                setIndex(1)
+                }else if(index === 1){
+                setIndex(2)
+                }else {
+                setEndloop(true)
+                }}else{
+                  if (index === 2 ){
+                    setIndex(1)
+                  }else if(index === 1){
+                    setIndex(0)
+                  }else {
+                    setEndloop(false)
+                  };
+                };
 
-    
+  }
+
+
+  useInterval(() => {//se puede usar setInterval pwro se buguea
+    if(!hit){
+        loop()
+      }else{ //cumpliendo hit
+        if(index === 0 ||index === 1|| index === 2){
+          setIndex(3)
+        }else if (index === 3){
+          setIndex(4)
+        }else if ( index === 4){
+          setIndex(5)
+        }else if (index === 5 && toastie === true){
+          setIndex(6)
+        }else  if(index === 6 && toastie === true){
+          setIndex(7)
+         
+        }
+      }  
   }, 200);  
 
   return (
