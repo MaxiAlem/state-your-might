@@ -19,6 +19,7 @@ body{
 .focus-level{
   font-size: xx-large;
   color: rgb(250, 220, 52);
+  margin: 0%;
 }
 .fillerBar{
     width: 100%;
