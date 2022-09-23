@@ -26,8 +26,8 @@ const hitBtn =()=>{
   setHit(true);
   setDisable(true);
   setTimeout(() => {
-    setNameBtn('Retry')
-  }, 1500); 
+    setNameBtn('>')
+  }, 1000); 
 }
 const focusBtn = ()=>{//posibl upgrade al puntaje
   setFocus(focus +10)
@@ -39,9 +39,10 @@ const retryBtn = ()=>{
   setToastie(false  )
   setmsg('...')
   setDisable(false)
+  setNameBtn('SLAM Dat Bitch')//consultar buena practica
 
 }
-if(!hit){time = 600 //una vez pulsado hit, se detiene el contador
+if(!hit){time = 200 //una vez pulsado hit, se detiene el contador
   }else {time = null
   }
 useInterval(() => {

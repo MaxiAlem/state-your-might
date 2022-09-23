@@ -33,8 +33,8 @@ body{
   position: absolute  ;
   border: 1vw;
   border-style: solid;
-  border-color: red;
-  width: 13vw;
+  border-color: rgb(255, 0, 0);
+  width: 88%;
 }
 .containerBar{
   
