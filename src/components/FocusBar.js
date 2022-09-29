@@ -3,21 +3,26 @@ import React,{ useContext }  from 'react'
 import { ToastieContext } from './TestGame'
 
 const FocusBar = () => {
-  const {focus} = useContext(ToastieContext) 
+  const {focus,lvlBar} = useContext(ToastieContext) 
    
     const dinamicWidth = {//inline para el dinamismo
         height: `${focus}%`,
       }
-    const focusBar ={
-      top: '79%'
+    const redBar ={
+      top: `${lvlBar}%`
     }
   return (
-    <div className='containerBar' >
-      <div style={dinamicWidth} className='fillerBar'  >
-        
-      </div>
-      <div   className='focusBar'style={focusBar}></div>
+    <div className='containerBar'>
+
+      <div className='whiteBar' >
+          <div style={dinamicWidth} className='fillerBar'  >
+            
+          </div>
+          <div   className='redBar'style={redBar}></div>
+        </div>
+
     </div>
+  
   )
 }
 

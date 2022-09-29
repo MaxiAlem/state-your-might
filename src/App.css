@@ -3,18 +3,41 @@
 body{
   background-color: rgb(41, 42, 97);
 }
-/* .App{
-  
-} */
-.kombatient{
-  height: 60vh;
-  max-width:80vw ;
-}
+.App{
+  display: flex;
+  flex-direction: column;
+} 
+
 .kombatient-container{
  margin-top: 5vh;
+ margin-bottom: 10vh;
  margin-left: 3vw;
   display: flex;
   flex-direction: row;
+  position: relative;
+}
+
+.kombatient{
+  left: 0px;
+  width:  90vw;
+  height: auto;
+  /* max-width:80vw ; */
+  
+}
+
+.containerBar{
+  margin-top: 10vh;
+  position: absolute;
+  height: 100%;
+}
+.whiteBar{
+  
+    width : 15vw;
+    height : 80%;
+    border: 1.5vw;
+    border-style: solid;
+    border-color: white;
+    position: relative;
 }
 .focus-level{
   font-size: xx-large;
@@ -29,26 +52,18 @@ body{
     text-align: 'right';
 
 }
-.focusBar{
+.redBar{
   position: absolute  ;
   border: 1vw;
   border-style: solid;
   border-color: rgb(255, 0, 0);
   width: 88%;
 }
-.containerBar{
-  
-    width : 15vw;
-    height : 80%;
-    border: 1.5vw;
-    border-style: solid;
-    border-color: white;
-    position: relative;
-}
 .bottom{
   display: flex;
   flex-direction: column;
    margin-bottom: 0%;
+   margin-left: 5vw
 }
 .buttonContainer{
   display: flex;
@@ -60,10 +75,75 @@ button{
   width: 20vw;
   height: 20vw;
   color: white;
-  font-size: 3vh;
+  font-size: 2vh;
   background-color: red;
   border : none;
   border-radius: 10%;
   margin-left: 5vw
   ;
+}
+
+
+@media (min-width: 700px) and (orientation: landscape) {
+
+  .App{
+    display: flex;
+    flex-direction: row;
+  } 
+    .kombatient-container{
+      margin-top: 0vh;
+      margin-bottom: 10vh;
+      margin-left: 3vw;
+      display: flex;
+      flex-direction: row;
+      position: relative;
+    }
+
+    .kombatient{
+      padding-left:20vh ;
+      width:  auto;
+      height: 80vh;
+      /* max-width:80vw ; */
+      
+    }
+    .containerBar{
+      margin-top: 10vh;
+      position: absolute;
+      height: 100%;
+    }
+
+    .whiteBar{
+    
+      width : 5vw;
+      height : 80%;
+      border: 0.5vw;
+      border-style: solid;
+      border-color: white;
+      position: relative;
+    }
+    .redBar{
+      position: absolute  ;
+      border: 0.5vw;
+      border-style: solid;
+      border-color: rgb(255, 0, 0);
+      width: 82%;
+    }
+    .bottom{
+      display: flex;
+      flex-direction: column-reverse;
+       margin-bottom: 0%;
+       margin-left: 5vw
+    }
+    button{
+      float: left;
+      width: 7vw;
+      height: 7vw;
+      color: white;
+      font-size: 3vh;
+      background-color: red;
+      border : none;
+      border-radius: 10%;
+      
+      ;
+    }
 }
