@@ -1,4 +1,4 @@
-import React, { useState, useContext,useEffect } from 'react'
+import React, { useState, useContext,useEffect,useCallback } from 'react'
 import useInterval from '../hooks/useInterval'
 
 import { ToastieContext } from './TestGame'
@@ -7,19 +7,46 @@ import { ToastieContext } from './TestGame'
 const Botones = () => {
   
   const {toastie,setToastie,
-    focus,setFocus,
-    hit,setHit,
-    setIndex,
-    points,setPoints,
-    level,setLevel,
-    lvlBar,setLvlBar,
-  timer, setTimer } = useContext(ToastieContext)  
+        focus,setFocus,
+        hit,setHit,
+        setIndex,
+        score,setScore,
+        level,setLevel,
+        lvlBar,setLvlBar,
+        timer, setTimer } = useContext(ToastieContext)  
     const [msg,setmsg] =useState('...')
-    const [disable,setDisable] = useState(false)
+    const [disable,setDisable] = useState(false)//disable hitbutton
     const [nameBtn,setNameBtn] =useState('SLAM Dat Bitch')
-    const [hidden, setHidden] = useState(true)
+    const [hidden, setHidden] = useState(true)//next button hidden until success hitbtton
     const [next,setNext] = useState('next')
     const [timeStarted, setTimeStarted] = useState(false);
+    
+ 
+    const reset =useCallback(//con callback podemos usarlo dentro de useffect
+      () => {
+        setTimer(5)
+        setHit(false)
+        setFocus(0);
+        setIndex(0);
+        setToastie(false  )
+        setmsg('...')
+        setDisable(false)  
+        setNameBtn('SLAM Dat Bitch')//consultar buena practica
+        setHidden(true)
+        setNext('next')
+      },
+      [setFocus,setHit,setIndex,setTimer,setToastie],
+    )
+   const gameOver= useCallback(
+      () => {
+        setTimeStarted(false)
+        setmsg('dont make me laugh');
+        setNext('retry?')
+        setDisable(true)
+        setHidden(false)
+      },
+      [],
+    )
     
     let time = 0
     
@@ -28,9 +55,8 @@ const hitBtn =()=>{
     if(focus >lvlBar) {
       setmsg('Toasty!');
       setToastie(true)      
-      setPoints(points +(100*level))
-         
-     
+      setScore(score +(1000*level*timer))
+
     }
     else {
       setmsg('dont make me laugh');
@@ -52,25 +78,18 @@ const focusBtn = ()=>{//posibl upgrade al puntaje
 }
 const nextBtn = ()=>{
   //reseteamos todos los estados
-  setTimer(5)
-  setHit(false)
-  setFocus(0);
-  setIndex(0);
-  setToastie(false  )
-  setmsg('...')
-  setDisable(false)  
-  setNameBtn('SLAM Dat Bitch')//consultar buena practica
-  setHidden(true) 
+   reset()
    if(toastie){
       setLevel(level +1)
       setLvlBar(lvlBar +15) // 12.5 lvl 8 maximo   -- 15 lvl 6 maximo
     }else {
-      setLevel(0)
-      setPoints(0)}
+      setLevel(1)
+      setScore(0)
+      setLvlBar(24)}
 }
 
 
-if(!hit){time = 200 //una vez pulsado hit, se detiene el contador
+if(!hit){time = 300 //una vez pulsado hit, se detiene el temporizador
   }else {time = null
   }
 useInterval(() => {
@@ -83,7 +102,7 @@ useInterval(() => {
 useEffect(() => {
   let intervalId;
 
-  if (timeStarted) {
+  if (timeStarted && timer >0) {
     intervalId = setInterval(() => {
       
 
@@ -93,15 +112,23 @@ useEffect(() => {
 
   return () => clearInterval(intervalId);
 }, [timeStarted, timer,setTimer]);
+// bloquear el juego cuando timer === 0//gameover
+useEffect(()=>{
+  if(timer === 0){
+    reset()
+   gameOver()
+   
+  }
+},[timer,gameOver,reset])
 
 //
 
 
   return (
       <div className='bottom'>
-        <div className='timer focus-level'>{timer}</div>
+        <div className='timer focus-level'>time :{timer}</div>
         <div className='btnContainer'>
-          <button
+          <button disabled ={disable}
             onClick={()=>focusBtn()}>FOCUS</button>
           <button disabled = {disable}
             onClick={()=>hitBtn()}>{nameBtn}</button> 
@@ -110,12 +137,10 @@ useEffect(() => {
             onClick={()=>nextBtn()}>{next}</button>
       </div>
         <p className='focus-level'> {msg}</p>
-        <p className='focus-level'>  Points :{points}</p>
+        <p className='focus-level'>  Score :{score}</p>
         <p className='focus-level'> level :{level}</p>
           </div>
-
-    
-    
+ 
     
   )
   

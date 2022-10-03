@@ -1,15 +1,32 @@
 
-/* @import url(//db.onlinewebfonts.com/c/d091f3206c618342e183bce6e68aaa37?family=Mortal+Kombat+1); */
+@import url('https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap');
+
+
 body{
-  background-color: rgb(41, 42, 97);
+  /* background-color: rgb(41, 42, 97); */
+  background-image: url(../src/img/fondo.jpg) ;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
 }
+
 .App{
   display: flex;
   flex-direction: column;
 } 
-
+header{
+  font-family: 'Sedgwick Ave Display', cursive;
+  text-align: center;
+  color: white;
+  font-size: 15vw;
+  position: fixed;
+  
+  
+}
 .kombatient-container{
- margin-top: 5vh;
+  margin-top: 5vh;
  margin-bottom: 10vh;
  margin-left: 3vw;
   display: flex;
@@ -63,7 +80,8 @@ body{
   display: flex;
   flex-direction: column;
    margin-bottom: 0%;
-   margin-left: 5vw
+   margin-left: 5vw;
+   text-align: center;
 }
 .buttonContainer{
   display: flex;
@@ -89,10 +107,19 @@ button{
   .App{
     display: flex;
     flex-direction: row;
+    
   } 
+  header{
+    font-family: 'Sedgwick Ave Display', cursive;
+    text-align: center;
+    color: white;
+    font-size: 5vw;
+    position:relative
+    
+  }
     .kombatient-container{
       margin-top: 0vh;
-      margin-bottom: 10vh;
+      margin-bottom: 0vh;
       margin-left: 3vw;
       display: flex;
       flex-direction: row;
