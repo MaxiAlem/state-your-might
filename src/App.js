@@ -4,6 +4,7 @@ import TestGame from './components/TestGame';
 import Botones from './components/Botones';
 import Kombatient from './components/Kombatient';
 import Header from './components/Header';
+import Score from './components/Score';
 
 
 function App() {
@@ -14,8 +15,11 @@ function App() {
         <Header/>
         <div className="App">
         <Kombatient/>
-
-        <Botones/>
+        <div className='bottom'>
+          <Botones/>
+          <Score/>
+        </div>
+        
         </div>
       </TestGame>
       

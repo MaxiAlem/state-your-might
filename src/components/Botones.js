@@ -1,6 +1,5 @@
 import React, { useState, useContext,useEffect,useCallback } from 'react'
 import useInterval from '../hooks/useInterval'
-
 import { ToastieContext } from './TestGame'
 
 
@@ -13,8 +12,9 @@ const Botones = () => {
         score,setScore,
         level,setLevel,
         lvlBar,setLvlBar,
-        timer, setTimer } = useContext(ToastieContext)  
-    const [msg,setmsg] =useState('...')
+        timer, setTimer,
+        setmsg } = useContext(ToastieContext)  
+    
     const [disable,setDisable] = useState(false)//disable hitbutton
     const [nameBtn,setNameBtn] =useState('SLAM Dat Bitch')
     const [hidden, setHidden] = useState(true)//next button hidden until success hitbtton
@@ -22,34 +22,23 @@ const Botones = () => {
     const [timeStarted, setTimeStarted] = useState(false);
     
  
-    const reset =useCallback(//con callback podemos usarlo dentro de useffect
-      () => {
-        setTimer(5)
-        setHit(false)
-        setFocus(0);
-        setIndex(0);
-        setToastie(false  )
-        setmsg('...')
-        setDisable(false)  
-        setNameBtn('SLAM Dat Bitch')//consultar buena practica
-        setHidden(true)
-        setNext('next')
-      },
-      [setFocus,setHit,setIndex,setTimer,setToastie],
-    )
-   const gameOver= useCallback(
-      () => {
-        setTimeStarted(false)
-        setmsg('dont make me laugh');
-        setNext('retry?')
-        setDisable(true)
-        setHidden(false)
-      },
-      [],
-    )
+
     
-    let time = 0
-    
+  const reset =useCallback(//con callback podemos usarlo dentro de useffect
+() => {
+  setTimer(5)
+  setHit(false)
+  setFocus(0);
+  setIndex(0);
+  setToastie(false  )
+  setmsg('...')
+  setDisable(false)  
+  setNameBtn('SLAM Dat Bitch')//consultar buena practica
+  setHidden(true)
+  setNext('next')
+},
+[setFocus,setHit,setIndex,setTimer,setToastie,setmsg],
+)  
 const hitBtn =()=>{
 
     if(focus >lvlBar) {
@@ -88,8 +77,8 @@ const nextBtn = ()=>{
       setLvlBar(24)}
 }
 
-
-if(!hit){time = 300 //una vez pulsado hit, se detiene el temporizador
+let time = 0
+if(!hit){time = 400 //una vez pulsado hit, se detiene el temporizador
   }else {time = null
   }
 useInterval(() => {
@@ -97,6 +86,9 @@ useInterval(() => {
     setFocus(focus - 5);}
   
 }, time);
+
+
+
 
 //timer
 useEffect(() => {
@@ -112,7 +104,18 @@ useEffect(() => {
 
   return () => clearInterval(intervalId);
 }, [timeStarted, timer,setTimer]);
+
 // bloquear el juego cuando timer === 0//gameover
+const gameOver= useCallback(
+  () => {
+    setTimeStarted(false)
+    setmsg('dont make me laugh');
+    setNext('retry?')
+    setDisable(true)
+    setHidden(false)
+  },
+  [setmsg],
+)
 useEffect(()=>{
   if(timer === 0){
     reset()
@@ -121,12 +124,32 @@ useEffect(()=>{
   }
 },[timer,gameOver,reset])
 
+// end game in lvl 6
+const endGame = useCallback(
+  () => {
+    reset()
+    gameOver()
+    
+    setmsg('you win')
+    setDisable(true)
+    
+  },
+  [gameOver,reset,setmsg],
+)
+useEffect(() => {
+  if(level >= 6 && hit){
+    endGame()
+    console.log('you win')
+    
+  }
+ 
+}, [level,hit,endGame])
+
 //
 
-
   return (
-      <div className='bottom'>
-        <div className='timer focus-level'>time :{timer}</div>
+      
+      
         <div className='btnContainer'>
           <button disabled ={disable}
             onClick={()=>focusBtn()}>FOCUS</button>
@@ -136,10 +159,8 @@ useEffect(()=>{
             <button hidden= {hidden}
             onClick={()=>nextBtn()}>{next}</button>
       </div>
-        <p className='focus-level'> {msg}</p>
-        <p className='focus-level'>  Score :{score}</p>
-        <p className='focus-level'> level :{level}</p>
-          </div>
+      
+          
  
     
   )
