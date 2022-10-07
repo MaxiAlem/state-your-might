@@ -45,7 +45,10 @@ const hitBtn =()=>{
       setmsg('Toasty!');
       setToastie(true)      
       setScore(score +(1000*level*timer))
-
+      setTimeout(() => {
+        setLevel(level +1)
+      }, 600);
+      
     }
     else {
       setmsg('dont make me laugh');
@@ -57,6 +60,7 @@ const hitBtn =()=>{
   setTimeout(() => {
           setNameBtn('=>');
           setHidden(false)
+          
         }, 1000); 
   setTimeStarted(false)
 
@@ -69,7 +73,7 @@ const nextBtn = ()=>{
   //reseteamos todos los estados
    reset()
    if(toastie){
-      setLevel(level +1)
+      
       setLvlBar(lvlBar +15) // 12.5 lvl 8 maximo   -- 15 lvl 6 maximo
     }else {
       setLevel(1)

@@ -1,5 +1,5 @@
 import React, {  useState, useContext } from 'react'
-import animChar from '../helpers/animation'
+import {animChar} from '../helpers/animation'
 import useInterval from '../hooks/useInterval'
 import FocusBar from './FocusBar'
 
@@ -7,13 +7,12 @@ import { ToastieContext } from './TestGame'
 
 const  animSet = require.context('../img',true)
 
-  
 const Kombatient = () => {
   
-  const {toastie,hit,index,setIndex} = useContext(ToastieContext) 
+  const {toastie,hit,index,setIndex,level} = useContext(ToastieContext) 
   
   const [endloop,setEndloop] = useState(false)
-
+   
   const loop =()=>{
       if(!endloop){
               if (index === 0 ){
@@ -34,7 +33,6 @@ const Kombatient = () => {
 
   }
 
-
   useInterval(() => {//se puede usar setInterval pwro se buguea
     if(!hit){
         loop()
@@ -54,6 +52,8 @@ const Kombatient = () => {
       }  
   }, 200);  
 
+
+  
   return (
    
             <>    
@@ -61,8 +61,9 @@ const Kombatient = () => {
               <div>
                 <FocusBar />
               </div>
-              <div>
+              <div className='kombat-div'>
                 <img className='kombatient' alt='fighter focusing to hit' src={animSet(animChar(index))}/>
+                <img className='mate' alt='thing to hit' src={animSet(`./ho${level}.png`)}/>
               </div>
               
             </div>

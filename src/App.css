@@ -30,11 +30,7 @@ header{
   color: white;
   font-size: 10vw;
 }
-.hiscore{
-  color: yellow;
-  font-size: 5vh;
-  text-align: right;
-}
+
 .github{
   max-width: 15vh;
   height: 15vh;
@@ -52,7 +48,24 @@ header{
   left: 0px;
   width:  90vw;
   height: auto;
+  
   /* max-width:80vw ; */
+  
+}
+.kombat-div{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-bottom: 8vh;
+ 
+}
+.mate{
+  height: 12vh;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   
 }
 
@@ -71,7 +84,7 @@ header{
     position: relative;
 }
 .focus-level{
-  font-size: xx-large;
+  font-size: 3vh;
   color: rgb(250, 220, 52);
   margin: 0%;
 }
@@ -105,7 +118,7 @@ header{
 button{
   float: left;
   width: 20vw;
-  height: 20vw;
+  height: 15vw;
   color: white;
   font-size: 2vh;
   background-color: red;
@@ -167,6 +180,8 @@ button{
       margin-top: 10vh;
       position: absolute;
       height: 100%;
+      margin-bottom: 0vh;
+      padding-bottom: 0vh;
     }
 
     .whiteBar{
@@ -202,5 +217,19 @@ button{
       border-radius: 10%;
       
       ;
+    }
+    .focus-level{
+      font-size: 6vh;
+    }
+    .mate{
+      height:18vh ;
+      width: auto;
+      padding-left: 25vh;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      
     }
 }

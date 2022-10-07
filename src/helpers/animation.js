@@ -9,5 +9,12 @@ for (let i =0;i<8;i++){
     return arrAnim[num]    
 }
 
-
-export default animChar
+const mateLvl = (num)=>{
+    const arrAnim = []
+    
+    for (let i =0;i<6;i++){
+        arrAnim[i] = './ho'+(i+1)+'.png'
+    }
+        return arrAnim[num]    
+    }
+export { animChar,mateLvl}
