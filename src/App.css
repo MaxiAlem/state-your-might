@@ -60,7 +60,7 @@ header{
  
 }
 .mate{
-  height: 12vh;
+  height: 18vh;
   position: absolute;
   left: 0;
   right: 0;
@@ -70,9 +70,10 @@ header{
 }
 
 .containerBar{
-  margin-top: 10vh;
+  top: 10vh;
   position: absolute;
   height: 100%;
+  padding-bottom: 0%;
 }
 .whiteBar{
   
@@ -109,6 +110,7 @@ header{
    margin-bottom: 0%;
    margin-left: 5vw;
    text-align: center;
+   margin: auto ;
 }
 .buttonContainer{
   display: flex;
@@ -124,7 +126,7 @@ button{
   background-color: red;
   border : none;
   border-radius: 10%;
-  margin-left: 5vw
+  margin-left: 5vw;
   ;
 }
 
@@ -222,7 +224,7 @@ button{
       font-size: 6vh;
     }
     .mate{
-      height:18vh ;
+      height:25vh ;
       width: auto;
       padding-left: 25vh;
       position: absolute;
